@@ -332,3 +332,7 @@ button.ghost.danger:hover:not(:disabled) { color: #fca5a5; background: rgba(239,
 /* footer */
 .footer { margin-top: 48px; padding: 20px 16px; text-align: center; font-size: 13px; color: var(--muted); border-top: 1px solid var(--border); }
 .footer b { color: var(--text, #fff); font-weight: 600; }
+
+/* confirm dialog */
+.modal h2.confirm-title { font-size: 22px; }
+.danger-btn { background: linear-gradient(135deg, #ef4444, #e11d48) !important; }

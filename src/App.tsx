@@ -76,8 +76,9 @@ export default function App() {
 
   const removeAt = (i: number) => setNames(names().filter((_, j) => j !== i));
 
+  const [confirmClear, setConfirmClear] = createSignal(false);
   const clearNames = () => {
-    if (names().length && confirm("Hapus semua nama?")) setNames([]);
+    if (names().length) setConfirmClear(true);
   };
 
   const spin = () => {
@@ -333,6 +334,29 @@ export default function App() {
                 Tutup
               </button>
               <button onClick={removeWinner}>Hapus dari roda</button>
+            </div>
+          </div>
+        </div>
+      </Show>
+
+      <Show when={confirmClear()}>
+        <div class="overlay" onClick={(e) => e.target === e.currentTarget && setConfirmClear(false)}>
+          <div class="modal" role="alertdialog" aria-modal="true">
+            <div class="trophy">🗑️</div>
+            <h2 class="confirm-title">Hapus semua nama?</h2>
+            <p class="muted">{names().length} nama bakal dihapus dari daftar.</p>
+            <div class="row">
+              <button onClick={() => setConfirmClear(false)}>Batal</button>
+              <button
+                class="primary danger-btn"
+                ref={(el) => setTimeout(() => el.focus())}
+                onClick={() => {
+                  setNames([]);
+                  setConfirmClear(false);
+                }}
+              >
+                Hapus
+              </button>
             </div>
           </div>
         </div>
