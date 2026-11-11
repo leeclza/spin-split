@@ -3,7 +3,7 @@ import { For, Match, Switch } from "solid-js";
 const PALETTE = ["#7c3aed", "#db2777", "#f59e0b", "#059669", "#2563eb", "#dc2626", "#0891b2", "#ea580c"];
 const R = 93;
 
-function colorAt(n: number, i: number) {
+export function colorAt(n: number, i: number) {
   // avoid the last slice sharing a color with the first one
   if (n > 1 && i === n - 1 && n % PALETTE.length === 1) return PALETTE[2];
   return PALETTE[i % PALETTE.length];
